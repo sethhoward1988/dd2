@@ -1,5 +1,7 @@
+app = new App();
+app.setColor();
+
 window.onload = function () {
-	app = new App();
 	var CLIENT_ID = '170341866546-1k4mk1vjm1le0ufmug24m5vdt7nab42p.apps.googleusercontent.com';
 	var SCOPES = [
 	  'https://www.googleapis.com/auth/drive'

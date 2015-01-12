@@ -2,7 +2,41 @@ body, html {
 	margin: 0;
 	width: 100%;
 	height: 100%;
-	background-image: url("../img/bg.jpg");
-	background-size: scale;
-	background-position: center center;
+}
+
+.blue{
+    background-color: #3F51B5;
+    color: white;
+}
+
+.blue .accent {
+    background-color: #303F9F;
+    color: white;
+}
+
+.blue .text {
+    background-color: #C5CAE9;
+    color: #333;
+}
+
+
+
+
+.orange {
+  background-color: #FF9800;
+  color: black;
+}
+
+
+
+
+.yellow {
+  background-color: #FFEB3B;
+  color: black;
+}
+
+
+.green {
+  background-color: #4CAF50;
+  color: white;
 }
