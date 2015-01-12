@@ -2,7 +2,9 @@
 <link rel="import" href="../bower_components/core-animated-pages/core-animated-pages.html">
 <link rel="import" href="../bower_components/core-animated-pages/transitions/cross-fade.html">
 <link rel="import" href="../bower_components/core-animated-pages/transitions/tile-cascade.html">
+<link rel="import" href="../bower_components/paper-input/paper-input-decorator.html">
 <link rel="import" href="file.html">
+<link rel="import" href="filelist.html">
 
 <polymer-element name="file-search">
   <template>
@@ -11,11 +13,17 @@
         width: 100%;
       }
 
-      #searchBar {
+      section {
+      }
+
+      paper-input-decorator {
+        width: 80%;
+        margin: 0 auto;
+        max-width: 400px;
+      }
+
+      #paper-input-decorator input {
         height: 40px;
-        width: 390px;
-        border-radius: 2px;
-        border: 1px solid #ccc;
         line-height: 40px;
         padding-left: 10px;
         font-size: 24px;
@@ -27,29 +35,77 @@
 
       core-animated-pages {
         position: absolute;
-        top: 50px;
+        top: 73px;
         right: 0;
         bottom: 0;
         left: 0;
       }
 
-      section > div {
+      section#animated > div {
         height: 100%;
         width: 100%;
       }
 
+      .searchbar {
+        top: 20%;
+        margin-left: calc(50% - 200px);
+        width: 400px;
+      }
+
+      .parent {
+      }
+
+      #results, #preview {
+        overflow: hidden;
+      }
+
+      #search {
+        width: 100%;
+        position: fixed;
+        transition: all 1s;
+      }
+
+      #results {
+        transition: all 1s;
+      }
+
+      #results.active {
+        transition: all 1s;
+      }
+
+      #preview {
+        transition: all 1s;
+      }
+
+      #preview.active {
+        transition: all 1s;
+        flex: 1 100%;
+        order: 3;
+      }
+
     </style>
-    <input id="searchBar" type="text" value="{{ search }}" />
-    <core-animated-pages id="animated" selected="{{ selected }}" transitions="tile-cascade cross-fade">
-      <section></section>
-    </core-animated-pages>
+    <section id="search">
+      <div class="searchbar">
+        <paper-input-decorator label="Search" floatinglabel>
+          <input id="searchBar" type="text" value="{{ search }}" on-keyup="{{ onKeyUp }}"/>
+        </paper-input-decorator>
+        <core-animated-pages id="animated" selected="{{ selected }}" transitions="tile-cascade cross-fade">
+          <section></section>
+        </core-animated-pages>
+      </div>
+    </section>
+    <section id="results">
+      <file-list id="fileList"></file-list>
+    </section>
+    <section id="preview">
+
+    </section>
   </template>
 
   <script>
     Polymer({
 
     	ready: function () {
-    		console.log('search bar ready');
         window.search = this;
         window.animated = this.$.animated;
         this.selected = 0;
@@ -71,16 +127,34 @@
       },
 
       refineSearch: function (query) {
+        var height = window.innerHeight;
+        var cardHeight = 50;
+        var top = (.3 * height) + 76
+        var maxCards = Math.floor((height - top)/cardHeight);
+
+        var shownCards = 0;
+
         for (var i = this.files.length - 1; i >= 0; i--) {
-          if(this.files[i].loTitle.indexOf(query) == -1){
+          if(shownCards == maxCards){
             this.files[i].el.classList.add('hidden')
           } else {
-            this.files[i].el.classList.remove('hidden')
+            if(this.files[i].loTitle.indexOf(query) == -1){
+              this.files[i].el.classList.add('hidden')
+            } else {
+              this.files[i].el.classList.remove('hidden');
+              shownCards++;
+            }  
           }
+          
         };
       },
 
       buildSection: function (query) {
+        var height = window.innerHeight;
+        var cardHeight = 50;
+        var top = (.3 * height) + 76
+        var maxCards = Math.floor((height - top)/cardHeight);
+
         var section = document.createElement('section');
         var div = document.createElement('div');
         div.setAttribute('tile-cascade', true);
@@ -95,6 +169,9 @@
           this.files[i].el = innerDiv;
           innerDiv.appendChild(file);
           div.appendChild(innerDiv);
+          if(i > maxCards){
+            innerDiv.classList.add('hidden');
+          }
         };
         this.$.animated.appendChild(section);
         this.selected = this.$.animated.children.length - 1;
@@ -102,6 +179,18 @@
 
       complete: function () {
         console.log('animation complete');
+      },
+
+      onKeyUp: function (evt) {
+        switch(evt.keyCode){
+          case 13:
+            this.$.results.classList.add('active');
+            this.$.fileList.refs = app.fileKeeper.search(this.search);;
+            break;
+          case 27:
+            this.$.results.classList.remove('active');
+            break;
+        }
       }
 
     });

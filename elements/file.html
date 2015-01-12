@@ -3,21 +3,27 @@
 <polymer-element name="file-card" attributes="file">
   <template>
   	<style>
-	  	#content {
-	  		background-color: white;
-	  		width: 400px;
-	  		height: 50px;
+	  	#filecontent {
+	  		width: 80%;
+        max-width: 400px;
+        margin: 0 auto;
+	  		height: 40px;
+        padding: 5px;
 	  	}
 
   		.title {
-  			float: left;
+        width: 75%;
+  			display: inline-block;
+        overflow: hidden;
+        text-overflow: ellipsis;
   		}
 
   		.info {
-  			float: right;
+        width: 23%;
+  			display: inline-block;
   		}
   	</style>
-  	<div id="content">
+  	<div id="filecontent">
   		<div class="title">
     		{{ file.title }}
     	</div>
@@ -28,10 +34,6 @@
   </template>
 
   <script>
-  Polymer({
-  	ready: function () {
-  		console.log('file card ready');
-  	}
-  });
+  Polymer({});
   </script>
 </polymer-element>
