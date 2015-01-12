@@ -1,0 +1,109 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-animated-pages/core-animated-pages.html">
+<link rel="import" href="../bower_components/core-animated-pages/transitions/cross-fade.html">
+<link rel="import" href="../bower_components/core-animated-pages/transitions/tile-cascade.html">
+<link rel="import" href="file.html">
+
+<polymer-element name="file-search">
+  <template>
+    <style>
+      ::host {
+        width: 100%;
+      }
+
+      #searchBar {
+        height: 40px;
+        width: 390px;
+        border-radius: 2px;
+        border: 1px solid #ccc;
+        line-height: 40px;
+        padding-left: 10px;
+        font-size: 24px;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      core-animated-pages {
+        position: absolute;
+        top: 50px;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+
+      section > div {
+        height: 100%;
+        width: 100%;
+      }
+
+    </style>
+    <input id="searchBar" type="text" value="{{ search }}" />
+    <core-animated-pages id="animated" selected="{{ selected }}" transitions="tile-cascade cross-fade">
+      <section></section>
+    </core-animated-pages>
+  </template>
+
+  <script>
+    Polymer({
+
+    	ready: function () {
+    		console.log('search bar ready');
+        window.search = this;
+        window.animated = this.$.animated;
+        this.selected = 0;
+        this.previousLength = 0;
+        this.sections = {};
+    	},
+
+      searchChanged: function () {
+        if(!this.search.length){
+          this.files = [];
+          this.$.animated.selected = 0;
+        } else if (this.search.length === 1 && this.previousLength === 0) {
+          this.files = app.fileKeeper.search(this.search);
+          this.buildSection();
+        } else {
+          this.refineSearch(this.search);
+        }
+        this.previousLength = this.search.length;
+      },
+
+      refineSearch: function (query) {
+        for (var i = this.files.length - 1; i >= 0; i--) {
+          if(this.files[i].loTitle.indexOf(query) == -1){
+            this.files[i].el.classList.add('hidden')
+          } else {
+            this.files[i].el.classList.remove('hidden')
+          }
+        };
+      },
+
+      buildSection: function (query) {
+        var section = document.createElement('section');
+        var div = document.createElement('div');
+        div.setAttribute('tile-cascade', true);
+        div.setAttribute('cross-fade', true);
+        section.appendChild(div);
+        for (var i = this.files.length - 1; i >= 0; i--) {
+          var innerDiv = document.createElement('div');
+          var file = document.createElement('file-card');
+          var rawFile = app.fileKeeper.files[this.files[i].ref];
+          this.files[i] = rawFile;
+          file.file = rawFile;
+          this.files[i].el = innerDiv;
+          innerDiv.appendChild(file);
+          div.appendChild(innerDiv);
+        };
+        this.$.animated.appendChild(section);
+        this.selected = this.$.animated.children.length - 1;
+      },
+
+      complete: function () {
+        console.log('animation complete');
+      }
+
+    });
+  </script>
+</polymer-element>
