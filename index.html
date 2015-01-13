@@ -7,6 +7,8 @@
 	</head>
 	<body>
 		<script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+		<link rel="import" href="bower_components/paper-radio-button/paper-radio-button.html">
+		<link rel="import" href="bower_components/paper-radio-group/paper-radio-group.html">
 		<script src="js/app.js"></script>
 		<script src="js/load.js"></script>
 		<script src="js/FileKeeper.js"></script>
@@ -23,11 +25,99 @@
   		<file-search></file-search>
 		</div>
 		<div class="colors">
-			<paper-radio-group selected="small">
-			  <paper-radio-button name="small" label="Small"></paper-radio-button>
-			  <paper-radio-button name="medium" label="Medium"></paper-radio-button>
-			  <paper-radio-button name="large" label="Large"></paper-radio-button>
-			</paper-radio-group>
+			<paper-radio-group id="pageColor" selected="{{ selected }}">
+			  <paper-radio-button id="blue" name="blue"></paper-radio-button>
+			  <paper-radio-button id="green" name="green"></paper-radio-button>
+			  <paper-radio-button id="orange" name="orange"></paper-radio-button>
+			  <paper-radio-button id="yellow" name="yellow"></paper-radio-button>
+			  <paper-radio-button id="purple" name="purple"></paper-radio-button>
+		  </paper-radio-group>
+		  <script>
+			  var colors = ['blue', 'orange', 'yellow', 'green', 'purple'];
+			  var randomColor = colors[Math.floor(Math.random() * 4)];
+			  document.getElementById('pageColor').selected = randomColor;
+			  console.log(randomColor)
+			  document.body.classList.add(randomColor);
+			  document.getElementById('pageColor').addEventListener('change', function (evt) {
+			  	document.body.classList.remove('blue');
+		  		document.body.classList.remove('green');
+		  		document.body.classList.remove('orange');
+		  		document.body.classList.remove('yellow');
+		  		document.body.classList.remove('purple');
+		  		document.body.classList.add(evt.target.getAttribute('name'));
+		  		console.log(this);
+		  		console.log(this.selected);
+			  })
+		  </script>
+		  <style>
+			    paper-radio-button#blue::shadow #ink[checked] {
+			      color: #1A237E; /*900*/
+			    }
+			    
+			    paper-radio-button#blue::shadow #onRadio {
+			      background-color: #1A237E; /*900*/
+			    }
+
+			    paper-radio-button#blue::shadow #ink {
+			      color: #C5CAE9; /*100*/
+			    }
+			    
+			    paper-radio-button::shadow #offRadio {
+			      border-color: #777; /*100*/
+			    }
+
+
+			    paper-radio-button#green::shadow #ink[checked] {
+			      color: #1B5E20; /*900*/
+			    }
+			    
+			    paper-radio-button#green::shadow #onRadio {
+			      background-color: #1B5E20; /*900*/
+			    }
+
+			    paper-radio-button#green::shadow #ink {
+			      color: #C8E6C9; /*100*/
+			    }
+
+
+			    paper-radio-button#orange::shadow #ink[checked] {
+			      color: #E65100; /*900*/
+			    }
+			    
+			    paper-radio-button#orange::shadow #onRadio {
+			      background-color: #E65100; /*900*/
+			    }
+
+			    paper-radio-button#orange::shadow #ink {
+			      color: #FFE0B2; /*100*/
+			    }
+
+
+			    paper-radio-button#yellow::shadow #ink[checked] {
+			      color: #FBC02D; /*900*/
+			    }
+			    
+			    paper-radio-button#yellow::shadow #onRadio {
+			      background-color: #FBC02D; /*900*/
+			    }
+
+			    paper-radio-button#yellow::shadow #ink {
+			      color: #FFF59D; /*100*/
+			    }
+
+
+			    paper-radio-button#purple::shadow #ink[checked] {
+			      color: #4A148C; /*900*/
+			    }
+			    
+			    paper-radio-button#purple::shadow #onRadio {
+			      background-color: #4A148C; /*900*/
+			    }
+
+			    paper-radio-button#purple::shadow #ink {
+			      color: #E1BEE7; /*100*/
+			    }
+		  </style>
 		</div>
 	</body>
 </html>

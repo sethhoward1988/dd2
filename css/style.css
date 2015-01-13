@@ -17,6 +17,12 @@ body {
   z-index: 100;
 }
 
+.colors {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+}
+
 .page {
   width: 100%;
   position: relative;
@@ -26,65 +32,79 @@ body {
 .blue{
   background-color: #3F51B5; /*500*/
   color: white;
+  transition: all .2s;
 }
 
 .blue .accent {
   background-color: #303F9F; /*700*/
   color: white;
+  transition: all .2s;
 }
 
 .blue .data-bar {
   background-color: #1A237E; /*900*/
   color: white;
+  transition: all .2s;
 }
 
 .blue /deep/ paper-input-decorator /deep/ .label-text {
   /* inline label,  floating label, error message and error icon color when the input is unfocused */
   color: white !important;
+  transition: all .2s;
 }
 
 .blue /deep/ paper-input-decorator /deep/ input {
   color: white;
+  transition: all .2s;
 }
 
 .blue /deep/ paper-input-decorator /deep/ input::-webkit-input-placeholder {
    color: #1A237E; /*900*/
+   transition: all .2s;
 }
 
 .blue /deep/ paper-input-decorator /deep/ input:-moz-placeholder { /* Firefox 18- */
    color: #1A237E; /*900*/
+   transition: all .2s;
 }
 
 .blue /deep/ paper-input-decorator /deep/ input::-moz-placeholder {  /* Firefox 19+ */
    color: #1A237E; /*900*/
+   transition: all .2s;
 }
 
 .blue /deep/ paper-input-decorator /deep/ input:-ms-input-placeholder {  
    color: #1A237E; /*900*/
+   transition: all .2s;
 }
 
 .blue /deep/ paper-input-decorator /deep/ .unfocused-underline {
   /* line color when the input is unfocused */
   background-color: #1A237E; /*900*/
+  transition: all .2s;
 }
 
 .blue /deep/ paper-input-decorator[focused] /deep/ .floating-label .label-text {
   /* floating label color when the input is focused */
   color: white;
+  transition: all .2s;
 }
 
 .blue /deep/ paper-input-decorator /deep/ .focused-underline {
   /* line color when the input is focused */
   background-color: white;
+  transition: all .2s;
 }
 
 .blue /deep/ #filecontent:hover {
   background-color: #E8EAF6; /*100*/
   color: black;
+  transition: all .2s;
 }
 
 .blue /deep/ .file:hover {
   background-color: #3F51B5; /*500*/
+  transition: all .2s;
 }
 
 .blue /deep/ .file:hover .title,
@@ -98,65 +118,79 @@ body {
 .orange{
   background-color: #FF9800; /*500*/
   color: white;
+  transition: all .2s;
 }
 
 .orange .accent {
   background-color: #F57C00; /*700*/
   color: white;
+  transition: all .2s;
 }
 
 .orange .data-bar {
   background-color: #E65100; /*900*/
   color: white;
+  transition: all .2s;
 }
 
 .orange /deep/ paper-input-decorator /deep/ .label-text {
   /* inline label,  floating label, error message and error icon color when the input is unfocused */
   color: white !important;
+  transition: all .2s;
 }
 
 .orange /deep/ paper-input-decorator /deep/ input {
   color: white;
+  transition: all .2s;
 }
 
 .orange /deep/ paper-input-decorator /deep/ input::-webkit-input-placeholder {
    color: #E65100; /*900*/
+   transition: all .2s;
 }
 
 .orange /deep/ paper-input-decorator /deep/ input:-moz-placeholder { /* Firefox 18- */
    color: #E65100; /*900*/
+   transition: all .2s;
 }
 
 .orange /deep/ paper-input-decorator /deep/ input::-moz-placeholder {  /* Firefox 19+ */
    color: #E65100; /*900*/
+   transition: all .2s;
 }
 
 .orange /deep/ paper-input-decorator /deep/ input:-ms-input-placeholder {  
    color: #E65100; /*900*/
+   transition: all .2s;
 }
 
 .orange /deep/ paper-input-decorator /deep/ .unfocused-underline {
   /* line color when the input is unfocused */
   background-color: #E65100; /*900*/
+  transition: all .2s;
 }
 
 .orange /deep/ paper-input-decorator[focused] /deep/ .floating-label .label-text {
   /* floating label color when the input is focused */
   color: white; /*text*/
+  transition: all .2s;
 }
 
 .orange /deep/ paper-input-decorator /deep/ .focused-underline {
   /* line color when the input is focused */
   background-color: white; /*text*/
+  transition: all .2s;
 }
 
 .orange /deep/ #filecontent:hover {
   background-color: #FFE0B2; /*100*/
   color: black;
+  transition: all .2s;
 }
 
 .orange /deep/ .file:hover {
   background-color: #FF9800; /*500*/
+  transition: all .2s;
 }
 
 .orange /deep/ .file:hover .title,
@@ -171,65 +205,79 @@ body {
 .yellow{
   background-color: #FFEB3B; /*500*/
   color: white;
+  transition: all .2s;
 }
 
 .yellow .accent {
   background-color: #FBC02D; /*700*/
   color: white;
+  transition: all .2s;
 }
 
 .yellow .data-bar {
   background-color: #F57F17; /*900*/
   color: white;
+  transition: all .2s;
 }
 
 .yellow /deep/ paper-input-decorator /deep/ input {
   color: black;
+  transition: all .2s;
 }
 
 .yellow /deep/ paper-input-decorator /deep/ .label-text {
   /* inline label,  floating label, error message and error icon color when the input is unfocused */
   color: black !important;
+  transition: all .2s;
 }
 
 .yellow /deep/ paper-input-decorator /deep/ input::-webkit-input-placeholder {
    color: #F57F17; /*900*/
+   transition: all .2s;
 }
 
 .yellow /deep/ paper-input-decorator /deep/ input:-moz-placeholder { /* Firefox 18- */
    color: #F57F17; /*900*/
+   transition: all .2s;
 }
 
 .yellow /deep/ paper-input-decorator /deep/ input::-moz-placeholder {  /* Firefox 19+ */
    color: #F57F17; /*900*/
+   transition: all .2s;
 }
 
 .yellow /deep/ paper-input-decorator /deep/ input:-ms-input-placeholder {  
    color: #F57F17; /*900*/
+   transition: all .2s;
 }
 
 .yellow /deep/ paper-input-decorator /deep/ .unfocused-underline {
   /* line color when the input is unfocused */
   background-color: #F57F17; /*900*/
+  transition: all .2s;
 }
 
 .yellow /deep/ paper-input-decorator[focused] /deep/ .floating-label .label-text {
   /* floating label color when the input is focused */
   color: black; /*text*/
+  transition: all .2s;
 }
 
 .yellow /deep/ paper-input-decorator /deep/ .focused-underline {
   /* line color when the input is focused */
   background-color: black; /*text*/
+  transition: all .2s;
 }
 
 .yellow /deep/ #filecontent:hover {
   background-color: #FFF9C4; /*100*/
   color: black;
+  transition: all .2s;
 }
 
 .yellow /deep/ .file:hover {
   background-color: #FFEB3B; /*500*/
+  transition: all .2s;
 }
 
 .yellow /deep/ .file:hover .title,
@@ -243,70 +291,175 @@ body {
 .green{
   background-color: #4CAF50; /*500*/
   color: white;
+  transition: all .2s;
 }
 
 .green .accent {
   background-color: #388E3C; /*700*/
   color: white;
+  transition: all .2s;
 }
 
 .green .data-bar {
   background-color: #1B5E20; /*900*/
   color: white;
+  transition: all .2s;
 }
 
 .green /deep/ paper-input-decorator /deep/ .label-text {
   /* inline label,  floating label, error message and error icon color when the input is unfocused */
   color: white !important;
+  transition: all .2s;
 }
 
 .green /deep/ paper-input-decorator /deep/ input {
   color: white;
+  transition: all .2s;
 }
 
 .green /deep/ paper-input-decorator /deep/ input::-webkit-input-placeholder {
    color: #1B5E20; /*900*/
+   transition: all .2s;
 }
 
 .green /deep/ paper-input-decorator /deep/ input:-moz-placeholder { /* Firefox 18- */
    color: #1B5E20; /*900*/
+   transition: all .2s;
 }
 
 .green /deep/ paper-input-decorator /deep/ input::-moz-placeholder {  /* Firefox 19+ */
    color: #1B5E20; /*900*/
+   transition: all .2s;
 }
 
 .green /deep/ paper-input-decorator /deep/ input:-ms-input-placeholder {  
    color: #1B5E20; /*900*/
+   transition: all .2s;
 }
 
 .green /deep/ paper-input-decorator /deep/ .unfocused-underline {
   /* line color when the input is unfocused */
   background-color: #1B5E20; /*900*/
+  transition: all .2s;
 }
 
 .green /deep/ paper-input-decorator[focused] /deep/ .floating-label .label-text {
   /* floating label color when the input is focused */
   color: white; /*text*/
+  transition: all .2s;
 }
 
 .green /deep/ paper-input-decorator /deep/ .focused-underline {
   /* line color when the input is focused */
   background-color: white; /*text*/
+  transition: all .2s;
 }
 
 .green /deep/ #filecontent:hover {
   background-color: #C8E6C9; /*100*/
   color: black;
+  transition: all .2s;
 }
 
 .green /deep/ .file:hover {
   background-color: #4CAF50; /*500*/
+  transition: all .2s;
 }
 
 .green /deep/ .file:hover .title,
 .green /deep/ .file:hover .details,
 .green /deep/ .file:hover .details a {
+  transition: all .2s;
+  color: white;
+}
+
+
+
+
+
+
+
+.purple{
+  background-color: #673AB7; /*500*/
+  color: white;
+  transition: all .2s;
+}
+
+.purple .accent {
+  background-color: #512DA8; /*700*/
+  color: white;
+  transition: all .2s;
+}
+
+.purple .data-bar {
+  background-color: #311B92; /*900*/
+  color: white;
+  transition: all .2s;
+}
+
+.purple /deep/ paper-input-decorator /deep/ .label-text {
+  /* inline label,  floating label, error message and error icon color when the input is unfocused */
+  color: white !important;
+  transition: all .2s;
+}
+
+.purple /deep/ paper-input-decorator /deep/ input {
+  color: white;
+  transition: all .2s;
+}
+
+.purple /deep/ paper-input-decorator /deep/ input::-webkit-input-placeholder {
+   color: #311B92; /*900*/
+   transition: all .2s;
+}
+
+.purple /deep/ paper-input-decorator /deep/ input:-moz-placeholder { /* Firefox 18- */
+   color: #311B92; /*900*/
+   transition: all .2s;
+}
+
+.purple /deep/ paper-input-decorator /deep/ input::-moz-placeholder {  /* Firefox 19+ */
+   color: #311B92; /*900*/
+   transition: all .2s;
+}
+
+.purple /deep/ paper-input-decorator /deep/ input:-ms-input-placeholder {  
+   color: #311B92; /*900*/
+   transition: all .2s;
+}
+
+.purple /deep/ paper-input-decorator /deep/ .unfocused-underline {
+  /* line color when the input is unfocused */
+  background-color: #311B92; /*900*/
+  transition: all .2s;
+}
+
+.purple /deep/ paper-input-decorator[focused] /deep/ .floating-label .label-text {
+  /* floating label color when the input is focused */
+  color: white; /*text*/
+  transition: all .2s;
+}
+
+.purple /deep/ paper-input-decorator /deep/ .focused-underline {
+  /* line color when the input is focused */
+  background-color: white; /*text*/
+  transition: all .2s;
+}
+
+.purple /deep/ #filecontent:hover {
+  background-color: #D1C4E9; /*100*/
+  color: black;
+  transition: all .2s;
+}
+
+.purple /deep/ .file:hover {
+  background-color: #673AB7; /*500*/
+  transition: all .2s;
+}
+
+.purple /deep/ .file:hover .title,
+.purple /deep/ .file:hover .details,
+.purple /deep/ .file:hover .details a {
   transition: all .2s;
   color: white;
 }

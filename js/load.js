@@ -1,5 +1,4 @@
 app = new App();
-app.setColor();
 
 window.onload = function () {
 	var CLIENT_ID = '170341866546-1k4mk1vjm1le0ufmug24m5vdt7nab42p.apps.googleusercontent.com';
