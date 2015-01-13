@@ -78,7 +78,7 @@
 
       #results {
         float: right;
-        height: 100%;
+        height: calc(100% - 25px);
         background-color: white;
         transition: all 1s;
         width: 50%;
@@ -138,7 +138,7 @@
 
         for (var i = this.files.length - 1; i >= 0; i--) {
           if(shownCards == maxCards){
-            this.files[i].el.classList.add('hidden')
+            this.files[i].el.classList.add('hidden');
           } else {
             if(this.files[i].loTitle.indexOf(query) == -1){
               this.files[i].el.classList.add('hidden')
@@ -152,6 +152,7 @@
       },
 
       buildSection: function (query) {
+        this.selected = 0;
         var height = window.innerHeight;
         var cardHeight = 50;
         var top = (.3 * height) + 76
@@ -188,6 +189,13 @@
           case 13:
             this.$.search.classList.add('split');
             this.$.fileList.refs = app.fileKeeper.search(this.search);
+            break;
+          case 38:
+            // Up
+
+            break;
+          case 40:
+            // Down
             break;
         }
       },

@@ -11,6 +11,8 @@
         padding: 5px;
         background-color: white;
         color: #737373;
+        line-height: 40px;
+        cursor: pointer;
 	  	}
 
   		.title {
@@ -20,14 +22,18 @@
         text-overflow: ellipsis;
   		}
 
-  		.info {
+      .image {
+        float: right;
         width: 23%;
-  			display: inline-block;
-  		}
+        top: 5px;
+        text-align: center;
+      }
   	</style>
   	<div id="filecontent" class="{{ selected }}" on-click="{{ onClick }}">
-  		<div class="title">{{ file.title }}</div>
-      <img src="{{ file.iconLink }}" />
+      <div class="title">{{ file.title }}</div>
+      <div class="image">
+        <img src="{{ file.iconLink }}" />
+      </div>
     </div>
   </template>
 

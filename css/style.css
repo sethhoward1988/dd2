@@ -1,9 +1,26 @@
-body, html {
+body {
 	margin: 0;
 	width: 100%;
-	height: 100%;
+	height: calc(100% - 25px);
   font-weight: 100;
   font-family: 'Roboto', sans-serif;
+  overflow-x: hidden;
+}
+
+.data-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 3px 10px;
+  font-size: 14px;
+  font-weight: 100;
+  z-index: 100;
+}
+
+.page {
+  width: 100%;
+  position: relative;
+  margin-top: 25px;
 }
 
 .blue{
@@ -19,9 +36,6 @@ body, html {
 .blue .data-bar {
   background-color: #1A237E; /*900*/
   color: white;
-  padding: 3px 10px;
-  font-size: 14px;
-  font-weight: 100;
 }
 
 .blue /deep/ paper-input-decorator /deep/ .label-text {
@@ -94,9 +108,6 @@ body, html {
 .orange .data-bar {
   background-color: #E65100; /*900*/
   color: white;
-  padding: 3px 10px;
-  font-size: 14px;
-  font-weight: 100;
 }
 
 .orange /deep/ paper-input-decorator /deep/ .label-text {
@@ -170,9 +181,6 @@ body, html {
 .yellow .data-bar {
   background-color: #F57F17; /*900*/
   color: white;
-  padding: 3px 10px;
-  font-size: 14px;
-  font-weight: 100;
 }
 
 .yellow /deep/ paper-input-decorator /deep/ input {
@@ -245,9 +253,6 @@ body, html {
 .green .data-bar {
   background-color: #1B5E20; /*900*/
   color: white;
-  padding: 3px 10px;
-  font-size: 14px;
-  font-weight: 100;
 }
 
 .green /deep/ paper-input-decorator /deep/ .label-text {
