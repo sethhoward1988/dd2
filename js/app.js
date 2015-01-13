@@ -11,6 +11,6 @@ App.prototype = {
 	},
 
   setColor: function () {
-    // document.body.classList.add(this.colors[Math.floor(Math.random() * 5)]);
+    document.body.classList.add(this.colors[Math.floor(Math.random() * 4)]);
   }
 }

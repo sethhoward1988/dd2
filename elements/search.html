@@ -47,9 +47,8 @@
       }
 
       .searchbar {
-        top: 20%;
-        margin-left: calc(50% - 200px);
         width: 400px;
+        margin: 0 auto;
       }
 
       .parent {
@@ -59,30 +58,33 @@
         overflow: hidden;
       }
 
+      #search, #results, #preview {
+        display: inline-block;
+      }
+
       #search {
         width: 100%;
         position: fixed;
         transition: all 1s;
       }
 
+      #search.split {
+        width: 50%;
+      }
+
+      #search.split ~ #results {
+        margin-right: 0%;
+      }
+
       #results {
+        float: right;
+        height: 100%;
+        background-color: white;
         transition: all 1s;
+        width: 50%;
+        margin-right: -50%;
+        overflow-y: scroll;
       }
-
-      #results.active {
-        transition: all 1s;
-      }
-
-      #preview {
-        transition: all 1s;
-      }
-
-      #preview.active {
-        transition: all 1s;
-        flex: 1 100%;
-        order: 3;
-      }
-
     </style>
     <section id="search">
       <div class="searchbar">
@@ -97,9 +99,7 @@
     <section id="results">
       <file-list id="fileList"></file-list>
     </section>
-    <section id="preview">
-
-    </section>
+    <section id="preview"></section>
   </template>
 
   <script>
@@ -111,6 +111,8 @@
         this.selected = 0;
         this.previousLength = 0;
         this.sections = {};
+        this.onWindowKeyup = this.onWindowKeyup.bind(this);
+        window.addEventListener('keyup', this.onWindowKeyup);
     	},
 
       searchChanged: function () {
@@ -184,12 +186,15 @@
       onKeyUp: function (evt) {
         switch(evt.keyCode){
           case 13:
-            this.$.results.classList.add('active');
-            this.$.fileList.refs = app.fileKeeper.search(this.search);;
+            this.$.search.classList.add('split');
+            this.$.fileList.refs = app.fileKeeper.search(this.search);
             break;
-          case 27:
-            this.$.results.classList.remove('active');
-            break;
+        }
+      },
+
+      onWindowKeyup: function (evt) {
+        if(evt.keyCode == 27){
+          this.$.search.classList.remove('split');
         }
       }
 

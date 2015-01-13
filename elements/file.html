@@ -1,6 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
-<polymer-element name="file-card" attributes="file">
+<polymer-element name="file-card" attributes="file selected">
   <template>
   	<style>
 	  	#filecontent {
@@ -9,6 +9,8 @@
         margin: 0 auto;
 	  		height: 40px;
         padding: 5px;
+        background-color: white;
+        color: #737373;
 	  	}
 
   		.title {
@@ -23,17 +25,17 @@
   			display: inline-block;
   		}
   	</style>
-  	<div id="filecontent">
-  		<div class="title">
-    		{{ file.title }}
-    	</div>
-    	<div class="info">
-    		{{ file }}
-    	</div>
+  	<div id="filecontent" class="{{ selected }}" on-click="{{ onClick }}">
+  		<div class="title">{{ file.title }}</div>
+      <img src="{{ file.iconLink }}" />
     </div>
   </template>
 
   <script>
-  Polymer({});
+  Polymer({
+    onClick: function () {
+      window.open(this.file.alternateLink);
+    }
+  });
   </script>
 </polymer-element>

@@ -7,10 +7,82 @@
       ::host {
         width: 100%;
       }
+
+      .file {
+        transition: all .2s;
+        height: 55px;
+        border-bottom: 1px solid #777;
+        padding: 5px 10px;
+        position: relative;
+      }
+
+      .file:hover {
+        transition: all .2s;
+        height: 210px;
+        cursor: pointer;
+      }
+
+      .file:hover .title,
+      .file:hover .details,
+      .file:hover .details a {
+        transition: all .2s;
+        color: white;
+      }
+
+      .file:hover .thumbnail {
+        width: 150px;
+      }
+
+      .file:hover .icon {
+        width: 0px;
+      }
+
+      .file .icon {
+        width: auto;
+      }
+
+      ::host:shadow:last-child {
+        border-bottom: none;
+      }
+
+      .clear {
+        float: clear;
+      }
+
+      .title {
+        transition: all .2s;
+        font-size: 18px;
+        color: black;
+      }
+
+      .details {
+        transition: all .2s;
+        font-size: 15px;
+        color: #777;
+      }
+
+      .details a {
+        transition: all .2s;
+        color: #777;
+      }
+
+      img {
+        transition: all .2s;
+        width: 0px;
+        top: 10px;
+        right: 10px;
+        position: absolute;
+      }
     </style>
     <template repeat="{{ file in files }}">
-      <div class="file">
-        <h2>{{ file.title }}</h2>
+      <div class="file" onclick="window.open('{{ file.alternateLink }}')">
+        <div class="title">{{ file.title }}</div>
+        <div class="details">
+          Last Modified on {{ file.modifiedDate }} by <a href="mailto:{{ file.lastModifyingUser.emailAddress }}">{{ file.lastModifyingUserName }}</a>
+        </div>
+        <img class="icon" src="{{ file.iconLink }}" />
+        <img class="thumbnail" src="{{ file.thumbnailLink }}" />
+        <div class="clear"></div>
       </div>
     </template>
   </template>
@@ -25,7 +97,9 @@
       refsChanged: function () {
         this.files = [];
         for (var i = this.refs.length - 1; i >= 0; i--) {
-          this.files.push(app.fileKeeper.files[this.refs[i].ref]);
+          var file = app.fileKeeper.files[this.refs[i].ref];
+          file.modifiedDate = new Date(file.modifiedDate).toDateString();
+          this.files.push(file);
         };
       }
 
